@@ -6,6 +6,7 @@
 {
   imports = [
     inputs.dms.nixosModules.greeter
+    inputs.spicetify-nix.nixosModules.spicetify
   ];
 
   programs = {
@@ -45,6 +46,20 @@
         obs-pipewire-audio-capture
       ];
     };
+
+    spicetify =
+      let
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+      in
+      {
+        enable = true;
+        enabledExtensions = with spicePkgs.extensions; [
+          adblockify
+          shuffle
+        ];
+        theme = spicePkgs.themes.catppuccin;
+        colorScheme = "mocha";
+      };
 
     nix-ld.enable = true;
   };

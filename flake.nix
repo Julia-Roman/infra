@@ -24,6 +24,7 @@
     niri.url = "github:sodiboo/niri-flake";
     dms.url = "github:AvengeMedia/DankMaterialShell";
     stylix.url = "github:nix-community/stylix/release-25.11";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     technorino.url = "git+https://github.com/2547techno/technorino?submodules=1";
     redlib.url = "github:0Supa/redlib/prod";
     uploader-basic.url = "github:0Supa/uploader-basic";
