@@ -49,22 +49,17 @@
     keepassxc # Password manager
     songrec # Shazam song recognition
     filezilla
-    curlie
     dig
     ripgrep
     gnupg
-    session-desktop
-    dbgate
     libreoffice
     zulu8
     zulu17
 
     # Dev
     vscode
-    github-desktop
     insomnia
     gh
-    lazygit
     gcc
     nodejs
     typescript-language-server
