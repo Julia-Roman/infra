@@ -39,6 +39,7 @@
         privateKeyFile = "/root/.wireguard/privatekey";
         peers = [
           {
+            endpoint = "77.48.27.53:51821";
             publicKey = "3mY64NBkRi/CHbdIj3mAABUV1s3Ugf97H5UxpE11dHw=";
             allowedIPs = [ "10.2.0.1/32" ];
             persistentKeepalive = 25;
