@@ -70,23 +70,6 @@
         '';
       };
 
-      "reddit.supa.gay" = {
-        extraConfig = ''
-          reverse_proxy :${toString config.services.redlib.port}
-
-          rate_limit {
-            zone redlib {
-              match {
-                path / /r/* /user/*
-              }
-              key    {header.CF-Connecting-IP}
-              events 10
-              window 10s
-            }
-          }
-        '';
-      };
-
       "pin.supa.gay" = {
         extraConfig = ''
           php_fastcgi unix/${config.services.phpfpm.pools.caddy.socket}
