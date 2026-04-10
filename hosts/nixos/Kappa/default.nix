@@ -154,7 +154,6 @@
 
   environment = {
     sessionVariables = {
-      BROWSER = "${lib.getExe pkgs.firefox}";
       EDITOR = "${lib.getExe pkgs.vscode}";
 
       # NIXOS_OZONE_WL = "1"; # causes flickering in electron apps

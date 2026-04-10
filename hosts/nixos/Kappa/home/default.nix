@@ -225,19 +225,19 @@
     defaultApplications = {
       "inode/directory" = "thunar.desktop";
 
-      "applications/x-www-browser" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/chrome" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
-      "application/x-extension-htm" = "firefox.desktop";
-      "application/x-extension-html" = "firefox.desktop";
-      "application/x-extension-shtml" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
-      "application/x-extension-xhtml" = "firefox.desktop";
-      "application/x-extension-xht" = "firefox.desktop";
-      "application/pdf" = "firefox.desktop";
+      "applications/x-www-browser" = "helium.desktop";
+      "x-scheme-handler/http" = "helium.desktop";
+      "x-scheme-handler/https" = "helium.desktop";
+      "x-scheme-handler/chrome" = "helium.desktop";
+      "x-scheme-handler/about" = "helium.desktop";
+      "x-scheme-handler/unknown" = "helium.desktop";
+      "application/x-extension-htm" = "helium.desktop";
+      "application/x-extension-html" = "helium.desktop";
+      "application/x-extension-shtml" = "helium.desktop";
+      "application/xhtml+xml" = "helium.desktop";
+      "application/x-extension-xhtml" = "helium.desktop";
+      "application/x-extension-xht" = "helium.desktop";
+      "application/pdf" = "helium.desktop";
 
       "text/html" = "code.desktop";
       "text/plain" = "code.desktop";
@@ -261,7 +261,7 @@
     "xfce4/helpers.rc".text = ''
       TerminalEmulator=foot
       FileManager=thunar
-      WebBrowser=firefox
+      WebBrowser=helium
       MailReader=thunderbird
       TextEditor=code
       VideoPlayer=mpv

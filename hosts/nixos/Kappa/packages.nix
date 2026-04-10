@@ -29,6 +29,7 @@
     # Internet
     librewolf
     chromium
+    inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.technorino.packages.${pkgs.stdenv.hostPlatform.system}.default
     electrum # BTC wallet
     # monero-gui # XMR wallet
