@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    inputs.dms.nixosModules.greeter
     inputs.spicetify-nix.nixosModules.spicetify
   ];
 
@@ -13,11 +12,6 @@
     niri = {
       enable = true;
       package = pkgs.niri-unstable;
-    };
-
-    dank-material-shell.greeter = {
-      enable = true;
-      compositor.name = "niri";
     };
 
     firefox.enable = true;

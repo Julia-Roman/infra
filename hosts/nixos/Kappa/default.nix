@@ -27,8 +27,7 @@
             inputs.stylix.homeModules.stylix
             inputs.niri.homeModules.config
             inputs.niri.homeModules.stylix
-            inputs.dms.homeModules.dank-material-shell
-            inputs.dms.homeModules.niri
+            inputs.noctalia.homeModules.default
           ];
         };
       };
@@ -109,6 +108,8 @@
     rtkit.enable = true;
     polkit.enable = true;
   };
+
+  networking.networkmanager.enable = true;
 
   users = {
     defaultUserShell = pkgs.zsh;
