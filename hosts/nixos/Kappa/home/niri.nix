@@ -21,14 +21,18 @@
 
       environment.DISPLAY = ":0";
 
+      spawn-at-startup = [
+        { command = [ "noctalia-shell" ]; }
+      ];
+
       window-rules = [
         {
           clip-to-geometry = true;
           geometry-corner-radius = {
-            bottom-left = 12.0;
-            bottom-right = 12.0;
-            top-left = 12.0;
-            top-right = 12.0;
+            bottom-left = 8.0;
+            bottom-right = 8.0;
+            top-left = 8.0;
+            top-right = 8.0;
           };
           shadow = {
             enable = true;
@@ -83,8 +87,8 @@
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
         "Ctrl+Mod+T".action = spawn "foot";
-        "Mod+D".action = spawn "dms" "ipc" "call" "spotlight" "toggle";
-        "Super+L".action = spawn "dms" "ipc" "call" "lock" "lock";
+        "Mod+D".action = spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
+        "Super+L".action = spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
 
         "Super+Tab".action = toggle-overview;
 
@@ -240,14 +244,14 @@
 
         "Mod+Shift+P".action = power-off-monitors;
 
-        "XF86AudioRaiseVolume".action = spawn "dms" "ipc" "call" "audio" "increment" "4";
-        "XF86AudioLowerVolume".action = spawn "dms" "ipc" "call" "audio" "decrement" "4";
-        "XF86AudioMute".action = spawn "dms" "ipc" "call" "audio" "mute";
-        "XF86AudioMicMute".action = spawn "dms" "ipc" "call" "audio" "micmute";
-        "XF86AudioPlay".action = spawn "dms" "ipc" "call" "mpris" "playPause";
-        "XF86AudioPause".action = spawn "dms" "ipc" "call" "mpris" "playPause";
-        "XF86AudioNext".action = spawn "dms" "ipc" "call" "mpris" "next";
-        "XF86AudioPrev".action = spawn "dms" "ipc" "call" "mpris" "previous";
+        "XF86AudioRaiseVolume".action = spawn "noctalia-shell" "ipc" "call" "volume" "increase";
+        "XF86AudioLowerVolume".action = spawn "noctalia-shell" "ipc" "call" "volume" "decrease";
+        "XF86AudioMute".action = spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput";
+        "XF86AudioMicMute".action = spawn "noctalia-shell" "ipc" "call" "volume" "muteInput";
+        "XF86AudioPlay".action = spawn "noctalia-shell" "ipc" "call" "media" "playPause";
+        "XF86AudioPause".action = spawn "noctalia-shell" "ipc" "call" "media" "playPause";
+        "XF86AudioNext".action = spawn "noctalia-shell" "ipc" "call" "media" "next";
+        "XF86AudioPrev".action = spawn "noctalia-shell" "ipc" "call" "media" "previous";
       };
     };
   };

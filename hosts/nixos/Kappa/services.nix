@@ -18,6 +18,18 @@
       jack.enable = true;
     };
 
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${lib.getExe pkgs.tuigreet} --time --cmd niri-session";
+          user = "supa";
+        };
+      };
+    };
+
+    power-profiles-daemon.enable = true;
+
     gvfs.enable = true;
     tumbler.enable = true;
   };

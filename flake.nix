@@ -19,6 +19,10 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     helium = {
       url = "github:schembriaiden/helium-browser-nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +30,6 @@
 
     fenix.url = "github:nix-community/fenix";
     niri.url = "github:sodiboo/niri-flake";
-    dms.url = "github:AvengeMedia/DankMaterialShell";
     stylix.url = "github:nix-community/stylix/release-25.11";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     technorino.url = "git+https://github.com/2547techno/technorino?submodules=1";

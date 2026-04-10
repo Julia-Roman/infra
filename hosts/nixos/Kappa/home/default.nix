@@ -8,6 +8,7 @@
 {
   imports = [
     ./niri.nix
+    ./noctalia.nix
   ];
 
   stylix = {
@@ -112,16 +113,6 @@
         bindkey "5~" kill-word
         bindkey "^[[3~" delete-char
       '';
-    };
-
-    dank-material-shell = {
-      enable = true;
-      enableSystemMonitoring = false;
-      niri = {
-        enableKeybinds = false;
-        enableSpawn = true;
-        includes.enable = false;
-      };
     };
 
     foot = {
@@ -268,7 +259,5 @@
       ImageViewer=ristretto
       ArchiveManager=file-roller
     '';
-
-    "DankMaterialShell/settings.json".source = ./dms/settings.json;
   };
 }
