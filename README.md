@@ -3,7 +3,7 @@
 Supa's multi-system flake
 
 <sub>Screenshot of [Kappa](hosts/nixos/Kappa) as of 11-01-2026</sub>
-![](https://github.com/user-attachments/assets/11ebf1c9-b96f-4a4f-8c0e-de97c5b7ad07)
+![](https://github.com/user-attachments/assets/08c57da2-fd82-4713-a117-f726ce1366b6)
 
 # 📦 Structure
 
