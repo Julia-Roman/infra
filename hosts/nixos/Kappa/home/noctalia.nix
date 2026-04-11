@@ -262,7 +262,7 @@
       };
       wallpaper = {
         enabled = true;
-        overviewEnabled = false;
+        overviewEnabled = true;
         directory = "/home/supa/Pictures/Wallpapers";
         monitorDirectories = [
 

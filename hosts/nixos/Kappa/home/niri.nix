@@ -53,6 +53,15 @@
         }
       ];
 
+      layer-rules = [
+        {
+          matches = [
+            { namespace = "^noctalia-overview*"; }
+          ];
+          place-within-backdrop = true;
+        }
+      ];
+
       outputs = {
         "DP-1" = {
           mode = {
