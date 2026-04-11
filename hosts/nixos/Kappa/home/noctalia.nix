@@ -36,13 +36,13 @@
         widgets = {
           left = [
             {
+              colorizeDistroLogo = false;
               colorizeSystemIcon = "none";
               colorizeSystemText = "none";
               customIconPath = "";
               enableColorization = false;
-              icon = "grid-dots";
-              iconColor = "none";
-              id = "Launcher";
+              icon = "noctalia";
+              id = "ControlCenter";
               useDistroLogo = false;
             }
             {
@@ -53,7 +53,7 @@
               focusedColor = "primary";
               followFocusedScreen = false;
               fontWeight = "bold";
-              groupedBorderOpacity = 1;
+              groupedBorderOpacity = 0.8;
               hideUnoccupied = true;
               iconScale = 0.8;
               id = "Workspace";
@@ -115,19 +115,9 @@
               textColor = "none";
             }
             {
-              colorizeDistroLogo = false;
-              colorizeSystemIcon = "none";
-              colorizeSystemText = "none";
-              customIconPath = "";
-              enableColorization = false;
-              icon = "noctalia";
-              id = "ControlCenter";
-              useDistroLogo = false;
-            }
-            {
               clockColor = "none";
               customFont = "";
-              formatHorizontal = "HH:mm ddd, MMM dd";
+              formatHorizontal = "HH:mm";
               formatVertical = "HH mm - dd MM";
               id = "Clock";
               tooltipFormat = "HH:mm ddd, MMM dd";
@@ -469,7 +459,7 @@
         wifiDetailsViewMode = "grid";
         bluetoothDetailsViewMode = "grid";
         bluetoothHideUnnamedDevices = false;
-        disableDiscoverability = false;
+        disableDiscoverability = true;
         bluetoothAutoConnect = true;
       };
       sessionMenu = {
