@@ -15,8 +15,14 @@
 
       layout = {
         gaps = 4;
-        border.width = 2;
-        tab-indicator.place-within-column = true;
+        border.width = 1;
+        tab-indicator = {
+          place-within-column = true;
+          length.total-proportion = 1.0;
+          corner-radius = 8;
+          gaps-between-tabs = 4;
+          position = "top";
+        };
       };
 
       environment.DISPLAY = ":0";
