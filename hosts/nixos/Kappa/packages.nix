@@ -46,7 +46,7 @@
     ffmpeg-full
     yt-dlp-git
     file-roller # Archive manager
-    pavucontrol # Volume control
+    pwvucontrol # Volume control
     keepassxc # Password manager
     songrec # Shazam song recognition
     filezilla
