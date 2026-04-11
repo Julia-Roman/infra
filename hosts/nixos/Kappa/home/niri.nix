@@ -25,6 +25,8 @@
         { command = [ "noctalia-shell" ]; }
       ];
 
+      debug.honor-xdg-activation-with-invalid-serial = [ ];
+
       window-rules = [
         {
           clip-to-geometry = true;
