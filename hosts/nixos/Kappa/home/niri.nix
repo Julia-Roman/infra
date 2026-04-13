@@ -105,6 +105,7 @@
 
         "Ctrl+Mod+T".action = spawn "foot";
         "Mod+D".action = spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
+        "Super+Period".action = spawn "noctalia-shell" "ipc" "call" "launcher" "emoji";
         "Super+L".action = spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
 
         "Super+Tab".action = toggle-overview;
