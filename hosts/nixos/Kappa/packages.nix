@@ -34,9 +34,8 @@
     electrum # BTC wallet
     # monero-gui # XMR wallet
     qbittorrent
-    webcord-vencord
     thunderbird
-    discord
+    vesktop
 
     # Utils/Misc
     xwayland-satellite-unstable
