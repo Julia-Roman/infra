@@ -208,7 +208,6 @@
 
   services = {
     mpris-proxy.enable = true;
-    arrpc.enable = true;
   };
 
   xdg.mimeApps = {
