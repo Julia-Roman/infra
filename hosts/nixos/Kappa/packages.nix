@@ -27,7 +27,6 @@
 
   users.users.supa.packages = with pkgs; [
     # Internet
-    librewolf
     chromium
     inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.technorino.packages.${pkgs.stdenv.hostPlatform.system}.default
