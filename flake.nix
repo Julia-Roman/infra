@@ -85,7 +85,7 @@
     extra-substituters = [ "https://attic.supa.sh/infra" ];
     extra-trusted-substituters = [ "https://attic.supa.sh/infra" ];
     extra-trusted-public-keys = [
-      "infra:q74uKfKZFmQAPy0shsvU2UPQ5nWy1weROWmfD6PlDLY="
+      "infra:fDwImWlNBAN6+Vte3W4aC+qLSIP0rOyO+j7+uqegNkY="
     ];
   };
 }
