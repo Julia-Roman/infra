@@ -28,8 +28,8 @@ jobs:
           extra_nix_config: |
             accept-flake-config = true
             
-      - name: Install Attic client
-        run: nix profile install nixpkgs#attic-client
+      - name: Install Attic and Omnix
+        run: nix profile install nixpkgs#attic-client github:juspay/omnix
 
       - name: Attic login
         run: attic login central https://attic.supa.sh/ ${{ secrets.ATTIC_LOGIN_TOKEN }}
@@ -38,10 +38,7 @@ jobs:
         run: attic use infra
 
       - name: Build flake outputs
-        run: |
-          nix run github:juspay/omnix -- ci run \
-            --extra-access-tokens ${{ secrets.GITHUB_TOKEN }} \
-            --results=$HOME/omci.json
+        run: om ci run --extra-access-tokens ${{ secrets.GITHUB_TOKEN }} --results=$HOME/omci.json
 
       - name: Push to Attic
         run: attic push infra $HOME/omci.json
