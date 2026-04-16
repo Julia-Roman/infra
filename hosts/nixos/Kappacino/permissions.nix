@@ -4,32 +4,32 @@
 {
   systemd.tmpfiles.settings = {
     "10-custom-permissions-nix" = {
-      "/mnt/hdd_4t".Z = {
+      "/mnt/hdd_4t".z = {
         mode = "0775";
         user = "supa";
       };
-      "/mnt/hdd_4t/movies".Z = {
+      "/mnt/hdd_4t/movies".z = {
         mode = "2770";
         group = "media";
       };
-      "/mnt/hdd_4t/music".Z = {
+      "/mnt/hdd_4t/music".z = {
         mode = "2770";
         group = "media";
       };
-      "/mnt/hdd_500g".Z = {
+      "/mnt/hdd_500g".z = {
         mode = "2770";
         group = "media";
       };
-      "/var/www".Z = {
+      "/var/www".z = {
         mode = "2770";
         user = "supa";
         group = "www";
       };
-      "/home/minecraft".Z = {
+      "/home/minecraft".z = {
         mode = "2770";
         group = "minecraft";
       };
-      "/home/fivem".Z = {
+      "/home/fivem".z = {
         mode = "2770";
         group = "fivem";
       };
