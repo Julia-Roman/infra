@@ -82,10 +82,10 @@
 
   nixConfig = {
     download-buffer-size = "256M";
-    extra-substituters = [ "https://supa.cachix.org" ];
-    extra-trusted-substituters = [ "https://supa.cachix.org" ];
+    extra-substituters = [ "https://attic.supa.sh/infra" ];
+    extra-trusted-substituters = [ "https://attic.supa.sh/infra" ];
     extra-trusted-public-keys = [
-      "supa.cachix.org-1:+rC20DiSj3IB8u8LgKV30nYAOwk9vP9aty3rdFz9/YM="
+      "infra:q74uKfKZFmQAPy0shsvU2UPQ5nWy1weROWmfD6PlDLY="
     ];
   };
 }

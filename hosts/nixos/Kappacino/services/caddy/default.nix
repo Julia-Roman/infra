@@ -232,6 +232,12 @@
         '';
       };
 
+      "attic.supa.sh" = {
+        extraConfig = ''
+          reverse_proxy ${config.services.atticd.settings.listen}
+        '';
+      };
+
       "jelly.supa.sh" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:8096
