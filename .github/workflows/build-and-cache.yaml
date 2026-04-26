@@ -27,9 +27,9 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             accept-flake-config = true
-            
+
       - name: Install Attic and Omnix
-        run: nix profile install nixpkgs#attic-client github:juspay/omnix
+        run: nix profile add nixpkgs#attic-client github:juspay/omnix
 
       - name: Attic login
         run: attic login central https://attic.supa.sh/ ${{ secrets.ATTIC_LOGIN_TOKEN }}
