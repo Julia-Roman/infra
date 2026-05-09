@@ -69,6 +69,9 @@
       "fsc"
       "noatime"
       "nofail"
+      "noauto"
+      "x-systemd.automount"
+      "_netdev"
     ];
   };
 
