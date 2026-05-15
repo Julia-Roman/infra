@@ -1,9 +1,7 @@
 {
   config,
-  lib,
   inputs,
   pkgs,
-  unstable,
   ...
 }:
 {

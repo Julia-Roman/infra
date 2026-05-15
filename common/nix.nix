@@ -38,7 +38,7 @@
     };
   };
 
-  _module.args = with pkgs.stdenv.hostPlatform; {
+  _module.args = {
     unstable = import inputs.nixpkgs-unstable {
       system = pkgs.system;
       config.allowUnfree = true;

@@ -1,10 +1,7 @@
 {
-  config,
   lib,
   inputs,
   pkgs,
-  unstable,
-  callPackage,
   ...
 }:
 {
