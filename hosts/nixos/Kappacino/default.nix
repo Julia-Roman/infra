@@ -64,6 +64,7 @@
     device = "10.2.0.1:/supelle";
     fsType = "nfs";
     options = [
+      "async"
       "fsc"
       "noatime"
       "nofail"
