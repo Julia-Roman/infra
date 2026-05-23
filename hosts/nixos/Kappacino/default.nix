@@ -66,6 +66,7 @@
     options = [
       "async"
       "fsc"
+      "nocto"
       "noatime"
       "nofail"
       "noauto"
