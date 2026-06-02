@@ -52,6 +52,7 @@
       name = "rose-pine-moon";
       package = pkgs.rose-pine-icon-theme;
     };
+    gtk4.theme = config.gtk.theme;
   };
 
   home = {
