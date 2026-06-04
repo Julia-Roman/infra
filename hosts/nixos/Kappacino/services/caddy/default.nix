@@ -293,7 +293,7 @@
                 not remote_ip private_ranges
               }
               key    {header.CF-Connecting-IP}
-              events 30
+              events 50
               window 10s
             }
           }
