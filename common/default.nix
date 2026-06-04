@@ -17,7 +17,7 @@
     bottom
     wget
     nixd
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   networking = {

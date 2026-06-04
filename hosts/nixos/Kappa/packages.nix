@@ -67,7 +67,7 @@
     php
 
     # Multimedia
-    xfce.ristretto # Image viewer
+    ristretto # Image viewer
     mpv
     jellyfin-mpv-shim
     jellyfin-rpc
