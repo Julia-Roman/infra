@@ -101,8 +101,6 @@
         e = "hx";
         neofetch = "fastfetch";
       };
-      history.size = 5000;
-      history.path = "${config.xdg.dataHome}/zsh/history";
 
       initContent = ''
         zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}"
