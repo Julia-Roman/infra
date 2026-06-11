@@ -53,7 +53,7 @@
               focusedColor = "primary";
               followFocusedScreen = false;
               fontWeight = "bold";
-              groupedBorderOpacity = 0.8;
+              groupedBorderOpacity = 1;
               hideUnoccupied = true;
               iconScale = 0.8;
               id = "Workspace";
