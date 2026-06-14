@@ -13,8 +13,8 @@ Supa's multi-system flake
   - ❄️ [/nixos](hosts/nixos) `NixOS systems`
     - 👩🏻‍💻 **[/Kappa](hosts/nixos/Kappa) `desktop`**
       - 🏠 [/home](hosts/nixos/Kappa/home) `app settings`
-    - 🌐 **[/Kappacino](hosts/nixos/Kappacino) `homeserver`**
-      - ⚙️ [/etc](hosts/nixos/Kappacino/etc) `system overrides`
-      - 🛠️ [/services](hosts/nixos/Kappacino/services) `service definitions`
-        - 🔧 [/systemd](hosts/nixos/Kappacino/services/systemd) `standalone services`
+    - 🌐 **[/homesrv](hosts/nixos/homesrv) `homeserver`**
+      - ⚙️ [/etc](hosts/nixos/homesrv/etc) `system overrides`
+      - 🛠️ [/services](hosts/nixos/homesrv/services) `service definitions`
+        - 🔧 [/systemd](hosts/nixos/homesrv/services/systemd) `standalone services`
         - ...

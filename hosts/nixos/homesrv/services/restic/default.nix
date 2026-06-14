@@ -5,7 +5,7 @@
   services.restic = {
     backups.digi = {
       initialize = true;
-      repository = "rclone:digi:backups/Kappacino/";
+      repository = "rclone:digi:backups/homesrv/";
       passwordFile = "/root/.secrets/RESTIC_PASSWORD_FILE";
       timerConfig = {
         OnCalendar = "03:00";

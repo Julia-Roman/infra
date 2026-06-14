@@ -18,7 +18,7 @@
     globalConfig.scrape_interval = "10s";
     scrapeConfigs = [
       {
-        job_name = "kappacino";
+        job_name = "homesrv";
         static_configs = [
           {
             targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
