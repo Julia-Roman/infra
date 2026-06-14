@@ -2,7 +2,7 @@
 
 Supa's multi-system flake
 
-<sub>Screenshot of [Kappa](hosts/nixos/Kappa) as of 11-01-2026</sub>
+<sub>Screenshot of [dsktp](hosts/nixos/dsktp) as of 11-01-2026</sub>
 ![](https://github.com/user-attachments/assets/2fc8547a-b10c-4fb6-a187-cc1224f7e6f1)
 
 # 📦 Structure
@@ -11,8 +11,8 @@ Supa's multi-system flake
 - 🧩 [/common](common) `reusable modules`
 - 🖥️ [/hosts](hosts) `host-specific setups`
   - ❄️ [/nixos](hosts/nixos) `NixOS systems`
-    - 👩🏻‍💻 **[/Kappa](hosts/nixos/Kappa) `desktop`**
-      - 🏠 [/home](hosts/nixos/Kappa/home) `app settings`
+    - 👩🏻‍💻 **[/dsktp](hosts/nixos/dsktp) `desktop`**
+      - 🏠 [/home](hosts/nixos/dsktp/home) `app settings`
     - 🌐 **[/homesrv](hosts/nixos/homesrv) `homeserver`**
       - ⚙️ [/etc](hosts/nixos/homesrv/etc) `system overrides`
       - 🛠️ [/services](hosts/nixos/homesrv/services) `service definitions`

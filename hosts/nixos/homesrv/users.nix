@@ -13,7 +13,7 @@
     users = {
       supa = {
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEv4PWtdTzuobEzEccSWgF2LJrjqgJI4s2bt3QJHqkiC supa@Kappa"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEv4PWtdTzuobEzEccSWgF2LJrjqgJI4s2bt3QJHqkiC supa@dsktp"
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIxBWxWouib3LC0VP9nSMA4AssxXZUXmgPSM6B1YHOdj supa iph15"
         ];
         isNormalUser = true;
@@ -37,7 +37,7 @@
       fivem = {
         isNormalUser = true;
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEv4PWtdTzuobEzEccSWgF2LJrjqgJI4s2bt3QJHqkiC supa@Kappa"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEv4PWtdTzuobEzEccSWgF2LJrjqgJI4s2bt3QJHqkiC supa@dsktp"
         ];
         group = "fivem";
         createHome = true;
