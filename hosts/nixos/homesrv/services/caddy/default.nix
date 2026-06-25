@@ -125,7 +125,7 @@
 
       "api-tv.supa.sh" = {
         extraConfig = ''
-          @liveapi path /tags/*
+          @liveapi path /tags/* /kick_playback/*
           handle @liveapi {
             reverse_proxy localhost:3420
           }
