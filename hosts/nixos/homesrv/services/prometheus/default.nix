@@ -45,10 +45,6 @@
         static_configs = [ { targets = [ "logs.supa.codes" ]; } ];
       }
       {
-        job_name = "bigears.supa.codes";
-        static_configs = [ { targets = [ "bigears.supa.codes" ]; } ];
-      }
-      {
         job_name = "MediaMTX";
         static_configs = [ { targets = [ "127.0.0.1:9998" ]; } ];
       }
