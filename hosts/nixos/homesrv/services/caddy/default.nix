@@ -50,10 +50,7 @@
 
       "supa.sh" = {
         extraConfig = ''
-          redir / https://tv.supa.sh/ permanent
-          root * /var/www/supa.sh
-          file_server
-          import static
+          redir * https://tv.supa.sh{uri}
         '';
       };
 
