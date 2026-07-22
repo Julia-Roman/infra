@@ -48,7 +48,7 @@
       omuljake = {
         isNormalUser = true;
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgfgQrYupRruKqTpuzlqNXqBVyKo+vfPXyCypSJLM9f omuljake"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYXj7DSfF7bzZxN8cV86m0v+58ZwfxbWfx4hDu7kxOT omuljake"
         ];
         createHome = true;
         extraGroups = [ "fivem" ];
