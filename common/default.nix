@@ -18,6 +18,7 @@
     wget
     nixd
     nixfmt
+    acl
   ];
 
   networking = {

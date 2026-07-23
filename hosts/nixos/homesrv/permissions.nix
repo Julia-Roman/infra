@@ -29,9 +29,13 @@
         mode = "2770";
         group = "minecraft";
       };
+
       "/home/fivem".z = {
         mode = "2770";
         group = "fivem";
+      };
+      "/home/fivem"."A+" = {
+        argument = "group:fivem:rwx,default:group:fivem:rwx";
       };
     };
   };
