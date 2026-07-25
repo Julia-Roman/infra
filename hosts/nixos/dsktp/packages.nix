@@ -28,10 +28,11 @@
     chromium
     inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.technorino.packages.${pkgs.stdenv.hostPlatform.system}.default
+    tor-browser
     electrum # BTC wallet
-    # monero-gui # XMR wallet
+    feather # XMR wallet
+    kdePackages.kleopatra # GPG key manager
     qbittorrent
-    thunderbird
     vesktop
 
     # Utils/Misc
