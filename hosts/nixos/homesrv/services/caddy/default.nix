@@ -12,7 +12,7 @@
       plugins = [
         "github.com/mholt/caddy-ratelimit@v0.1.0"
       ];
-      hash = "sha256-MsRTVptWoXJay5AD+jcKKnGgP9ev6bRBM4XrkDE2VNw=";
+      hash = "sha256-eET4cfn1OGyl8rtq8/dO95eM+hvjLPi9IyyWz6vT5QQ=";
     };
 
     virtualHosts = {
