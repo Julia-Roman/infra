@@ -169,6 +169,8 @@
 
         keep-open = "yes";
         force-window = "yes";
+        write-filename-in-watch-later-config = "yes";
+        save-position-on-quit = "yes";
         osd-bar-w = 40;
         osd-bar-h = 2;
         volume-max = 200;
