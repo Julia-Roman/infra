@@ -58,7 +58,7 @@
       goku = {
         isNormalUser = true;
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM7U1x00A2ocDIEHFFkbeo5c1/5mmPCV8qiDvJf9qiMt goku"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL4e4mtPZHbrATBkdeq37UfW5SuS8dVsZGibuC0DmaB5 goku"
         ];
         createHome = true;
         extraGroups = [ "fivem" ];
