@@ -73,6 +73,16 @@
         home = "/home/chimichanga";
       };
 
+      fui = {
+        isNormalUser = true;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKdu/8WZGXWasf/7hjAWI4uwi3KaBIUjURlNC7A9s34V fui"
+        ];
+        createHome = true;
+        extraGroups = [ "fivem" ];
+        home = "/home/fui";
+      };
+
       qbittorrent = {
         isSystemUser = true;
         group = "media";
