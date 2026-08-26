@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./lib.nix
     ./nix.nix
     inputs.agenix.nixosModules.default
   ];
