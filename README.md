@@ -16,5 +16,3 @@ Supa's multi-system flake
     - 🌐 **[/homesrv](hosts/nixos/homesrv) `homeserver`**
       - ⚙️ [/etc](hosts/nixos/homesrv/etc) `system overrides`
       - 🛠️ [/services](hosts/nixos/homesrv/services) `service definitions`
-        - 🔧 [/systemd](hosts/nixos/homesrv/services/systemd) `standalone services`
-        - ...
