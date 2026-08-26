@@ -35,10 +35,7 @@
       };
 
       fivem = {
-        isNormalUser = true;
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEv4PWtdTzuobEzEccSWgF2LJrjqgJI4s2bt3QJHqkiC supa@dsktp"
-        ];
+        isSystemUser = true;
         group = "fivem";
         createHome = true;
         home = "/home/fivem";
