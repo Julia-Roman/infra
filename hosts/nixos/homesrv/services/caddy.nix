@@ -383,27 +383,6 @@
         extraConfig = ''
           reverse_proxy :10002
           encode zstd gzip
-
-          rate_limit {
-            zone bestlogs {
-              match {
-                not remote_ip private_ranges
-                not path /rm/* /recent-messages/* /api/v2/recent-messages/*
-              }
-              key    {remote_host}
-              events 10
-              window 10s
-            }
-
-            zone bestlogs_rm {
-              match {
-                not remote_ip private_ranges
-              }
-              key    {remote_host}
-              events 30
-              window 10s
-            }
-          }
         '';
       };
     };
