@@ -66,6 +66,8 @@
     fenix.default.toolchain
     nil
     php
+    python3
+    python3Packages.pip
 
     # Multimedia
     ristretto # Image viewer
