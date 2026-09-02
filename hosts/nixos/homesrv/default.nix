@@ -72,6 +72,11 @@
       "noauto"
       "x-systemd.automount"
       "_netdev"
+      "soft"
+      "timeo=50"
+      "retrans=2"
+      "retry=0"
+      "x-systemd.mount-timeout=15"
     ];
   };
 
