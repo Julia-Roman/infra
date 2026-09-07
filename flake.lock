@@ -97,15 +97,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1788356886,
-        "narHash": "sha256-I31FRPU4tLXANRCSYbkL63U9ljqATNWMWMeO3S9At48=",
+        "lastModified": 1788771506,
+        "narHash": "sha256-Az6xDG5z096LDiU6TzGP9DVF2hfSICwWQrE1XQCwIIQ=",
         "owner": "Julia-Roman",
         "repo": "bestlogs-rs",
-        "rev": "efd3092f7712d3168d02b619350a6ca2e531c0a4",
+        "rev": "bea56cb45e2d7035ac0c574f8850d1c331e2c769",
         "type": "github"
       },
       "original": {
         "owner": "Julia-Roman",
+        "ref": "slow-instance-fanout",
         "repo": "bestlogs-rs",
         "type": "github"
       }
@@ -1082,11 +1083,11 @@
     "yt-dlp-git": {
       "flake": false,
       "locked": {
-        "lastModified": 1785884314,
-        "narHash": "sha256-tDJNBlmgOCX2FRNgojk9wvC5z9MQFVu7xo/e20ghjp8=",
+        "lastModified": 1788098325,
+        "narHash": "sha256-Wlr4N21a/oQQbxQ8n5P0aJHq9EegTTqeKzHoGC9U5zo=",
         "owner": "yt-dlp",
         "repo": "yt-dlp",
-        "rev": "5d6b8c8cd19785c3086ae3a9ec618c45e25eb3bc",
+        "rev": "bbc809a1161d3bfca51fa36f59dda35556ee85a0",
         "type": "github"
       },
       "original": {
