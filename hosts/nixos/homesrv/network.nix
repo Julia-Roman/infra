@@ -28,6 +28,8 @@
         24454 # Minecraft (voicechat)
         30120 # FiveM
         51820 # WireGuard
+        16261 # PZ game data
+        16262 # PZ direct connection
       ];
     };
 
