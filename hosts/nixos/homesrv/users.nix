@@ -71,9 +71,10 @@
       chimichanga = {
         isNormalUser = true;
         openssh.authorizedKeys.keys = [
-
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClexd1XfqBrbgd3TWr4bI4ATkr/a/utc9WXlUBaBD+AsiiF5stUvmcn9G1BBr3k9xHmS1iiCBpa6DDKpR6Dvcw2m/lgVFr2oNw/aQJqjlcL7KLEidNHwk2hE1Q9MmTHPaqfWaRkMO1U60sdSRekjggWs2Seqo3PysEHeZvTA1KLAoduPjta6S337Aoye3UIRIxMUXMV0ekfaFTON+Q/1UBvY4NBHZN973sep17Sy6SDPEQ0vl73tRKJw/PjrgZWm6xy2i0tPmekAUmI4rVIku7WW0d619BLhi+nMOA8+WGys2oTM/LL6bYxYcfAFbRfsyGbZUymALzLluYNAUWA24b chimi"
         ];
         extraGroups = [ "fivem" ];
+        linger = true;
       };
 
       fui = {
