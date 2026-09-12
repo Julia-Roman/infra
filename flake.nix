@@ -28,6 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     fenix.url = "github:nix-community/fenix";
     niri.url = "github:sodiboo/niri-flake";
     stylix.url = "github:nix-community/stylix/release-26.05";
