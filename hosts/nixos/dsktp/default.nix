@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  chaotic = inputs.chaotic.unrestrictedPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   imports = [
     ./hardware.nix
@@ -32,7 +35,7 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+    kernelPackages = chaotic.linuxPackages_cachyos;
     loader = {
       systemd-boot = {
         enable = true;
@@ -79,10 +82,11 @@
     };
 
     nvidia = {
+      package = chaotic.nvidia_cachyos;
       modesetting.enable = true;
       powerManagement.enable = false;
       powerManagement.finegrained = false;
-      open = false;
+      open = true;
       nvidiaSettings = false;
     };
 
