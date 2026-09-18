@@ -17,6 +17,7 @@
         1935 # RTMP
         8554 # RTSP
         30120 # FiveM
+        30169 # FiveM staging
       ];
       allowedUDPPorts = [
         80
@@ -27,6 +28,7 @@
         8890 # SRT
         24454 # Minecraft (voicechat)
         30120 # FiveM
+        30169 # FiveM staging
         51820 # WireGuard
         16261 # PZ game data
         16262 # PZ direct connection
