@@ -384,7 +384,7 @@
         '';
       };
 
-      "tx.staging.3pixeli.ro" = {
+      "staging-tx.3pixeli.ro" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:40121
         '';
