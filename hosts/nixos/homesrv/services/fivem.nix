@@ -15,6 +15,7 @@ let
     {
       enable = true;
       restartIfChanged = false;
+      wantedBy = [ "multi-user.target" ];
       unitConfig = {
         After = "network-online.target";
       };
@@ -32,18 +33,11 @@ let
 in
 {
   systemd.services = {
-    fivem =
-      instance {
-        dataDir = "${txData}/QBCoreFramework_9EAABC.base";
-        envFile = "/etc/fivem.env";
-      }
-      // {
-        wantedBy = [ "multi-user.target" ];
-      };
+    fivem = instance {
+      dataDir = "${txData}/QBCoreFramework_9EAABC.base";
+      envFile = "/etc/fivem.env";
+    };
 
-    # Not wanted by multi-user.target: a Cfx license key only works on one
-    # running server at a time, so this stays a `systemctl start fivem-staging`
-    # until /etc/fivem-staging.env has a key of its own.
     fivem-staging = instance {
       dataDir = "${txData}/STAGING_QBCoreFramework_9EAABC.base";
       envFile = "/etc/fivem-staging.env";
