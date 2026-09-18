@@ -353,7 +353,7 @@
 
       "txadmin.supa.codes" = {
         extraConfig = ''
-          reverse_proxy 127.0.0.1:40120
+          redir * https://tx.3pixeli.ro{uri} permanent
         '';
       };
 
@@ -375,6 +375,18 @@
           redir /youtube https://www.youtube.com/@3Pixeli
           redir /tiktok https://www.tiktok.com/@3pixeli
           redir /github https://github.com/3pixeli
+        '';
+      };
+
+      "tx.3pixeli.ro" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:40120
+        '';
+      };
+
+      "tx.staging.3pixeli.ro" = {
+        extraConfig = ''
+          reverse_proxy 127.0.0.1:40121
         '';
       };
 
