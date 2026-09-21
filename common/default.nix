@@ -34,6 +34,9 @@
     ];
   };
 
+  # /tmp is tmpfs; keep Claude Code's temp files on disk
+  environment.sessionVariables.CLAUDE_CODE_TMPDIR = "/var/tmp";
+
   hardware.enableAllFirmware = true;
 
   system.configurationRevision = inputs.self.rev or "dirty";
