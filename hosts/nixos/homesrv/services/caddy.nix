@@ -363,21 +363,6 @@
         '';
       };
 
-      "3pixeli.ro" = {
-        serverAliases = [
-          "www.3pixeli.ro"
-          "rp.3pixeli.ro"
-        ];
-        extraConfig = ''
-          redir / https://wiki.3pixeli.ro
-
-          redir /discord https://discord.gg/pGp8RkxKdu
-          redir /youtube https://www.youtube.com/@3Pixeli
-          redir /tiktok https://www.tiktok.com/@3pixeli
-          redir /github https://github.com/3pixeli
-        '';
-      };
-
       "tx.3pixeli.ro" = {
         extraConfig = ''
           reverse_proxy 127.0.0.1:40120
