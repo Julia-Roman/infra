@@ -12,6 +12,7 @@
         environmentFile = "/etc/bestlogs.env";
         settings = {
           port = 10002;
+          forceIpv4 = true;
           rateLimit = {
             enabled = true;
             events = 10;
