@@ -16,6 +16,10 @@
       # /var/lib/n8n a symlink to /var/lib/private/n8n
       N8N_RESTRICT_FILE_ACCESS_TO = "/var/lib/n8n/.n8n-files;/var/lib/private/n8n/.n8n-files";
       FONTS_DIR = "${pkgs.montserrat}/share/fonts/ttf";
+      WHISPER_MODEL = "${pkgs.fetchurl {
+        url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
+        sha256 = "0p8yqkwvpl9lyy43yajk305bps0v5z1qgyg0jwh35j7cb1nqs4y6";
+      }}";
     };
   };
 
@@ -27,6 +31,7 @@
       yt-dlp-git
       jq
       imagemagick
+      whisper-cpp
     ];
     # scripts for Execute Command nodes, kept outside this repo
     serviceConfig.BindReadOnlyPaths = [ "-/home/supa/git/n8n-private:/opt/n8n" ];
