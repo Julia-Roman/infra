@@ -1,4 +1,9 @@
-{ pkgs, unstable, ... }:
+{
+  lib,
+  pkgs,
+  unstable,
+  ...
+}:
 {
   services.n8n = {
     enable = true;
@@ -25,6 +30,7 @@
         sha256 = "191gap94x0040qlg9yb4r46j28q4zh3q2wd87rav9yrwvpj868wg";
       }}";
       DISABLE_AUTOUPDATER = "1";
+      LIBVA_DRIVER_NAME = "iHD";
     };
   };
 
@@ -36,7 +42,7 @@
       yt-dlp-git
       jq
       imagemagick
-      whisper-cpp
+      (whisper-cpp.override { vulkanSupport = true; })
       (python3.withPackages (ps: [
         ps.opencv4
         ps.numpy
@@ -48,6 +54,10 @@
       BindReadOnlyPaths = [ "-/home/supa/git/n8n-private:/opt/n8n" ];
       # CLAUDE_CODE_OAUTH_TOKEN from `claude setup-token`
       EnvironmentFile = "-/etc/n8n.env";
+      # iGPU for VA-API encode/decode and Vulkan whisper
+      PrivateDevices = lib.mkForce false;
+      DeviceAllow = [ "/dev/dri/renderD128 rw" ];
+      SupplementaryGroups = [ "render" ];
     };
   };
 }
