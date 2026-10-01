@@ -22,6 +22,7 @@
   systemd.services.n8n = {
     path = with pkgs; [
       bash
+      curl
       ffmpeg-full
       yt-dlp-git
       jq
