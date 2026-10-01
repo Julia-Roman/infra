@@ -12,12 +12,22 @@
       # n8n 2.x excludes Execute Command by default, needed for ffmpeg
       NODES_EXCLUDE = "[]";
       N8N_DEFAULT_BINARY_DATA_MODE = "filesystem";
+      # n8n compares realpaths against this list, and DynamicUser makes
+      # /var/lib/n8n a symlink to /var/lib/private/n8n
+      N8N_RESTRICT_FILE_ACCESS_TO = "/var/lib/n8n/.n8n-files;/var/lib/private/n8n/.n8n-files";
+      FONTS_DIR = "${pkgs.montserrat}/share/fonts/ttf";
     };
   };
 
-  systemd.services.n8n.path = with pkgs; [
-    ffmpeg-full
-    yt-dlp-git
-    imagemagick
-  ];
+  systemd.services.n8n = {
+    path = with pkgs; [
+      bash
+      ffmpeg-full
+      yt-dlp-git
+      jq
+      imagemagick
+    ];
+    # scripts for Execute Command nodes, kept outside this repo
+    serviceConfig.BindReadOnlyPaths = [ "-/home/supa/git/n8n-private:/opt/n8n" ];
+  };
 }
