@@ -20,6 +20,7 @@
         url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
         sha256 = "0p8yqkwvpl9lyy43yajk305bps0v5z1qgyg0jwh35j7cb1nqs4y6";
       }}";
+      DISABLE_AUTOUPDATER = "1";
     };
   };
 
@@ -32,8 +33,13 @@
       jq
       imagemagick
       whisper-cpp
+      unstable.claude-code
     ];
     # scripts for Execute Command nodes, kept outside this repo
-    serviceConfig.BindReadOnlyPaths = [ "-/home/supa/git/n8n-private:/opt/n8n" ];
+    serviceConfig = {
+      BindReadOnlyPaths = [ "-/home/supa/git/n8n-private:/opt/n8n" ];
+      # CLAUDE_CODE_OAUTH_TOKEN from `claude setup-token`
+      EnvironmentFile = "-/etc/n8n.env";
+    };
   };
 }
