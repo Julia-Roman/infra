@@ -31,6 +31,8 @@
       }}";
       DISABLE_AUTOUPDATER = "1";
       LIBVA_DRIVER_NAME = "iHD";
+      PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
     };
   };
 
@@ -46,6 +48,8 @@
       (python3.withPackages (ps: [
         ps.opencv4
         ps.numpy
+        ps.playwright
+        ps.qrcode
       ]))
       unstable.claude-code
     ];
