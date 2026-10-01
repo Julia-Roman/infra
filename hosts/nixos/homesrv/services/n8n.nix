@@ -20,6 +20,10 @@
         url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
         sha256 = "0p8yqkwvpl9lyy43yajk305bps0v5z1qgyg0jwh35j7cb1nqs4y6";
       }}";
+      YUNET_MODEL = "${pkgs.fetchurl {
+        url = "https://media.githubusercontent.com/media/opencv/opencv_zoo/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx";
+        sha256 = "191gap94x0040qlg9yb4r46j28q4zh3q2wd87rav9yrwvpj868wg";
+      }}";
       DISABLE_AUTOUPDATER = "1";
     };
   };
@@ -33,6 +37,10 @@
       jq
       imagemagick
       whisper-cpp
+      (python3.withPackages (ps: [
+        ps.opencv4
+        ps.numpy
+      ]))
       unstable.claude-code
     ];
     # scripts for Execute Command nodes, kept outside this repo
