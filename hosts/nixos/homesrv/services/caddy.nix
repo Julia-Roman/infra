@@ -321,6 +321,12 @@
         '';
       };
 
+      "n8n.supa.codes" = {
+        extraConfig = ''
+          reverse_proxy :5678
+        '';
+      };
+
       "umami.supa.codes" = {
         serverAliases = [ "intel.supa.sh" ];
         extraConfig = ''
