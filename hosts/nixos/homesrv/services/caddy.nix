@@ -323,7 +323,14 @@
 
       "n8n.supa.codes" = {
         extraConfig = ''
-          reverse_proxy :5678
+          # files n8n workflows publish, see n8n.nix
+          handle_path /files/* {
+            root * /var/lib/n8n-public
+            file_server
+          }
+          handle {
+            reverse_proxy :5678
+          }
         '';
       };
 

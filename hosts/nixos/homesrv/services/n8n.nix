@@ -33,6 +33,9 @@
       LIBVA_DRIVER_NAME = "iHD";
       PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
       PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+      # files workflows publish over https, served by the /files route in caddy.nix
+      PUBLIC_FILES_DIR = "/var/lib/n8n-public";
+      PUBLIC_FILES_URL = "https://n8n.supa.codes/files";
     };
   };
 
@@ -49,7 +52,6 @@
         ps.opencv4
         ps.numpy
         ps.playwright
-        ps.qrcode
       ]))
       unstable.claude-code
     ];
@@ -61,7 +63,16 @@
       # iGPU for VA-API encode/decode and Vulkan whisper
       PrivateDevices = lib.mkForce false;
       DeviceAllow = [ "/dev/dri/renderD128 rw" ];
-      SupplementaryGroups = [ "render" ];
+      SupplementaryGroups = [
+        "render"
+        "n8n-public"
+      ];
+      ReadWritePaths = [ "/var/lib/n8n-public" ];
     };
   };
+
+  # public files: n8n writes, caddy serves, cleaned up after 2 days
+  users.groups.n8n-public = { };
+  users.users.caddy.extraGroups = [ "n8n-public" ];
+  systemd.tmpfiles.rules = [ "d /var/lib/n8n-public 2770 root n8n-public 2d" ];
 }
