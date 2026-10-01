@@ -278,8 +278,6 @@
 
       "logs.supa.codes" = {
         extraConfig = ''
-          redir / https://tv.supa.sh/logs{uri} permanent
-
           handle /robots.txt {
             respond <<EOF
             User-agent: *
