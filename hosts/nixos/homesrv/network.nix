@@ -1,4 +1,5 @@
 {
+  pkgs,
   ...
 }:
 {
@@ -50,6 +51,33 @@
           }
         ];
       };
+    };
+  };
+
+  # A stale NAT/conntrack entry somewhere on the path can blackhole one exact
+  # UDP port pair indefinitely, since keepalives keep refreshing it. Moving to
+  # a fresh source port gets around it; the peer roams to the new endpoint.
+  systemd.services.wg0-watchdog = {
+    description = "Rotate wg0 listen port when the handshake goes stale";
+    after = [ "wireguard-wg0.service" ];
+    path = [ pkgs.wireguard-tools ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      last=$(wg show wg0 latest-handshakes | cut -f2)
+      if [ $(( $(date +%s) - last )) -lt 300 ]; then
+        exit 0
+      fi
+      port=$(( 51821 + RANDOM % 100 ))
+      echo "wg0 handshake stale, moving to port $port"
+      wg set wg0 listen-port "$port"
+    '';
+  };
+
+  systemd.timers.wg0-watchdog = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "5min";
+      OnUnitActiveSec = "1min";
     };
   };
 }
