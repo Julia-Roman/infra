@@ -17,10 +17,13 @@
 
     # https://www.cloudflare.com/ips/ — strict mode takes the rightmost
     # untrusted X-Forwarded-For entry, since anything left of Cloudflare's
-    # own is whatever the client chose to send.
+    # own is whatever the client chose to send. 2a06:98c0::/29 is listed
+    # around 2a06:98c0:3600::/48, where every Cloudflare Worker's
+    # subrequests come from: anyone can run a Worker, so that hop is the
+    # client, not Cloudflare vouching for one.
     globalConfig = ''
       servers {
-        trusted_proxies static 173.245.48.0/20 103.21.244.0/22 103.22.200.0/22 103.31.4.0/22 141.101.64.0/18 108.162.192.0/18 190.93.240.0/20 188.114.96.0/20 197.234.240.0/22 198.41.128.0/17 162.158.0.0/15 104.16.0.0/13 104.24.0.0/14 172.64.0.0/13 131.0.72.0/22 2400:cb00::/32 2606:4700::/32 2803:f800::/32 2405:b500::/32 2405:8100::/32 2a06:98c0::/29 2c0f:f248::/32
+        trusted_proxies static 173.245.48.0/20 103.21.244.0/22 103.22.200.0/22 103.31.4.0/22 141.101.64.0/18 108.162.192.0/18 190.93.240.0/20 188.114.96.0/20 197.234.240.0/22 198.41.128.0/17 162.158.0.0/15 104.16.0.0/13 104.24.0.0/14 172.64.0.0/13 131.0.72.0/22 2400:cb00::/32 2606:4700::/32 2803:f800::/32 2405:b500::/32 2405:8100::/32 2a06:98c0::/35 2a06:98c0:2000::/36 2a06:98c0:3000::/38 2a06:98c0:3400::/39 2a06:98c0:3601::/48 2a06:98c0:3602::/47 2a06:98c0:3604::/46 2a06:98c0:3608::/45 2a06:98c0:3610::/44 2a06:98c0:3620::/43 2a06:98c0:3640::/42 2a06:98c0:3680::/41 2a06:98c0:3700::/40 2a06:98c0:3800::/37 2a06:98c0:4000::/34 2a06:98c0:8000::/33 2a06:98c1::/32 2a06:98c2::/31 2a06:98c4::/30 2c0f:f248::/32
         trusted_proxies_strict
       }
     '';
