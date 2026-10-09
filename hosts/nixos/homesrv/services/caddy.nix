@@ -100,7 +100,7 @@
                 not remote_ip private_ranges
                 not path /image_proxy.php
               }
-              key    {remote_host}
+              key    {client_ip}
               events 20
               window 10s
             }
@@ -128,10 +128,9 @@
           rate_limit {
             zone probe_cdn {
               match {
-                not remote_ip private_ranges 159.69.37.33
-                not header CF-Connecting-IP 159.69.37.33
+                not client_ip private_ranges 159.69.37.33
               }
-              key    {header.CF-Connecting-IP} || {remote_host}
+              key    {client_ip}
               events 100
               window 60s
             }
@@ -221,7 +220,7 @@
               match {
                 not remote_ip private_ranges
               }
-              key    {remote_host}
+              key    {client_ip}
               events 100
               window 60s
             }
@@ -287,7 +286,7 @@
               match {
                 not remote_ip private_ranges
               }
-              key    {header.CF-Connecting-IP}
+              key    {client_ip}
               events 50
               window 10s
             }
