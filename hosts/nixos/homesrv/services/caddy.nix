@@ -139,31 +139,6 @@
         '';
       };
 
-      "api-tv.supa.sh" = {
-        extraConfig = ''
-          @liveapi path /tags/* /kick_playback/*
-          handle @liveapi {
-            reverse_proxy localhost:3420
-          }
-
-          handle {
-            header Access-Control-Allow-Origin *
-            reverse_proxy :7813
-          }
-
-          rate_limit {
-            zone api_tv {
-              match {
-                not remote_ip private_ranges
-              }
-              key    {header.CF-Connecting-IP}
-              events 50
-              window 10s
-            }
-          }
-        '';
-      };
-
       "api.lurkology.com" = {
         extraConfig = ''
           reverse_proxy :7813
