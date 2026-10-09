@@ -75,9 +75,8 @@ let
   # entries with no rule above them: the trees actually handed to inotifywait
   roots = filter (p: !(builtins.any (q: q != p && covers q p) paths)) paths;
 
-  excludes = lib.concatMap (p: rules.${p}.exclude or [ ]) paths;
-
-  fnOf = path: "rule_" + replaceStrings [ "/" "." "-" ] [ "_" "_" "_" ] (removePrefix "/" path);
+  slug = path: replaceStrings [ "/" "." "-" ] [ "_" "_" "_" ] (removePrefix "/" path);
+  fnOf = path: "rule_" + slug path;
 
   indent = pad: lines: concatMapStringsSep "\n" (line: pad + line) lines;
 
@@ -130,55 +129,54 @@ let
       }
     '';
 
-  watcher = pkgs.writeShellScript "enforce-permissions" ''
-    set -u
-    export PATH=${
-      lib.makeBinPath [
-        pkgs.acl
-        pkgs.coreutils
-        pkgs.findutils
-        pkgs.inotify-tools
-      ]
-    }
+  # one watcher per root: the rules walk trees other users can write to, so a
+  # swapped-in symlink can redirect a chown/chmod anywhere it can reach. Each
+  # instance only gets write access to its own tree (see serviceConfig below).
+  mkWatcher =
+    root:
+    let
+      ps = filter (covers root) paths;
+      excludes = lib.concatMap (p: rules.${p}.exclude or [ ]) ps;
+    in
+    pkgs.writeShellScript "enforce-permissions-${slug root}" ''
+      set -u
+      export PATH=${
+        lib.makeBinPath [
+          pkgs.acl
+          pkgs.coreutils
+          pkgs.findutils
+          pkgs.inotify-tools
+        ]
+      }
 
-    ${concatMapStringsSep "\n" mkRuleFn paths}
+      ${concatMapStringsSep "\n" mkRuleFn ps}
 
-    # longest match wins, so a nested rule beats the one it is nested in
-    dispatch() {
-      case "$1" in
-    ${indent "    " (map (p: "${p}|${p}/*) ${fnOf p} \"$1\" ;;") (reverseList paths))}
-      esac
-    }
-
-    # each rule prunes the subtrees its nested rules own, so no path is walked twice
-    reconcile() {
-    ${indent "  " (map (p: "${fnOf p} ${p}") paths)}
-    }
-
-    watch=()
-    for root in ${concatMapStringsSep " " lib.escapeShellArg roots}; do
-      if [ -d "$root" ]; then
-        watch+=("$root")
-      else
-        echo "skipping missing directory $root" >&2
-      fi
-    done
-    [ "''${#watch[@]}" -gt 0 ] || { echo "nothing to watch" >&2; exit 1; }
-
-    # stderr is folded into the stream so the reconcile pass can start the
-    # moment the watches are up, closing the gap between the two
-    inotifywait --monitor --recursive --event create --event moved_to \
-      --format '%w%f' -- "''${watch[@]}" ${
-        concatMapStringsSep " " (e: lib.escapeShellArg "@${e}") excludes
-      } 2>&1 |
-      while IFS= read -r line; do
-        case "$line" in
-          "Watches established."*) echo "watches established, reconciling" >&2; reconcile & ;;
-          /*) dispatch "$line" ;;
-          *) printf '%s\n' "$line" >&2 ;;
+      # longest match wins, so a nested rule beats the one it is nested in
+      dispatch() {
+        case "$1" in
+      ${indent "    " (map (p: "${p}|${p}/*) ${fnOf p} \"$1\" ;;") (reverseList ps))}
         esac
-      done
-  '';
+      }
+
+      # each rule prunes the subtrees its nested rules own, so no path is walked twice
+      reconcile() {
+      ${indent "  " (map (p: "${fnOf p} ${p}") ps)}
+      }
+
+      # stderr is folded into the stream so the reconcile pass can start the
+      # moment the watches are up, closing the gap between the two
+      inotifywait --monitor --recursive --event create --event moved_to \
+        --format '%w%f' -- ${lib.escapeShellArg root} ${
+          concatMapStringsSep " " (e: lib.escapeShellArg "@${e}") excludes
+        } 2>&1 |
+        while IFS= read -r line; do
+          case "$line" in
+            "Watches established."*) echo "watches established, reconciling" >&2; reconcile & ;;
+            /*) dispatch "$line" ;;
+            *) printf '%s\n' "$line" >&2 ;;
+          esac
+        done
+    '';
 in
 {
   # the roots themselves are cheap to stamp on every activation; their contents
@@ -198,23 +196,51 @@ in
     // optionalAttrs (r ? acl) { "a+".argument = r.acl; }
   ) rules;
 
-  systemd.services."systemd-tmpfiles-resetup".partOf = [ "sysinit-reactivation.target" ];
+  systemd.services = {
+    "systemd-tmpfiles-resetup".partOf = [ "sysinit-reactivation.target" ];
+  }
+  // lib.listToAttrs (
+    map (root: {
+      name = "enforce-permissions-${slug root}";
+      value = {
+        description = "Enforce owner and mode under ${root}";
+        wantedBy = [ "multi-user.target" ];
+        after = [ "systemd-tmpfiles-setup.service" ];
+        unitConfig = {
+          RequiresMountsFor = root;
+          ConditionPathIsDirectory = root;
+        };
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = mkWatcher root;
+          Restart = "always";
+          RestartSec = 5;
+          # the reconcile pass walks the media disks, stay out of everyone's way
+          Nice = 19;
+          IOSchedulingClass = "idle";
 
-  systemd.services.enforce-permissions = {
-    description = "Enforce owner and mode on watched directories";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "systemd-tmpfiles-setup.service" ];
-    unitConfig.RequiresMountsFor = roots;
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = watcher;
-      Restart = "always";
-      RestartSec = 5;
-      # the reconcile pass walks the media disks, stay out of everyone's way
-      Nice = 19;
-      IOSchedulingClass = "idle";
-    };
-  };
+          ProtectSystem = "strict";
+          ReadWritePaths = [ root ];
+          PrivateTmp = true;
+          PrivateDevices = true;
+          PrivateNetwork = true;
+          ProtectKernelTunables = true;
+          ProtectKernelModules = true;
+          ProtectControlGroups = true;
+          NoNewPrivileges = true;
+          # FSETID keeps chmod from dropping the setgid bit on entries whose
+          # group root isn't in
+          CapabilityBoundingSet = [
+            "CAP_CHOWN"
+            "CAP_DAC_OVERRIDE"
+            "CAP_DAC_READ_SEARCH"
+            "CAP_FOWNER"
+            "CAP_FSETID"
+          ];
+        };
+      };
+    }) roots
+  );
 
   # one watch per directory in the trees above
   boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
