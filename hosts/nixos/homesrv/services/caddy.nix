@@ -151,6 +151,12 @@
         '';
       };
 
+      "api.lurkology.com" = {
+        extraConfig = ''
+          reverse_proxy :7813
+        '';
+      };
+
       "tv.supa.codes" = {
         extraConfig = ''
           redir https://tv.supa.sh{uri} permanent
