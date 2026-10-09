@@ -399,6 +399,20 @@
           encode zstd gzip
         '';
       };
+
+      "bestlogs.lurkology.com" = {
+        extraConfig = ''
+          handle /robots.txt {
+            respond <<EOF
+            User-agent: *
+            Disallow: /
+            EOF 200
+          }
+
+          reverse_proxy :10002
+          encode zstd gzip
+        '';
+      };
     };
   };
 
