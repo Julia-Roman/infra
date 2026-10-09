@@ -68,6 +68,9 @@
       "fsc"
       "nocto"
       "noatime"
+      "nosuid"
+      "nodev"
+      "noexec"
       "nofail"
       "noauto"
       "x-systemd.automount"
@@ -86,7 +89,10 @@
     openssh = {
       enable = true;
       ports = [ 38126 ];
-      settings.PasswordAuthentication = false;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
       openFirewall = true;
     };
 
