@@ -107,6 +107,7 @@
     postgresql = {
       enable = true;
       enableTCPIP = true;
+      settings.shared_preload_libraries = "pg_stat_statements";
     };
 
     mysql = {
