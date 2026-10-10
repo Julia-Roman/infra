@@ -107,7 +107,17 @@
     postgresql = {
       enable = true;
       enableTCPIP = true;
-      settings.shared_preload_libraries = "pg_stat_statements";
+      settings = {
+        shared_preload_libraries = "pg_stat_statements";
+        # the defaults size Postgres for a small VM on spinning disks; this host has 31 GB and NVMe
+        shared_buffers = "4GB";
+        effective_cache_size = "12GB";
+        work_mem = "16MB";
+        maintenance_work_mem = "512MB";
+        random_page_cost = 1.1;
+        effective_io_concurrency = 200;
+        max_wal_size = "4GB";
+      };
     };
 
     mysql = {
