@@ -35,7 +35,7 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     technorino.url = "git+https://github.com/2547techno/technorino?submodules=1";
     uploader-basic.url = "github:Julia-Roman/uploader-basic";
-    bestlogs-rs.url = "github:Julia-Roman/bestlogs-rs/slow-instance-fanout";
+    bestlogs-rs.url = "github:Julia-Roman/bestlogs-rs";
 
     yt-dlp-git = {
       url = "github:yt-dlp/yt-dlp";

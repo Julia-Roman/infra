@@ -106,7 +106,6 @@
       },
       "original": {
         "owner": "Julia-Roman",
-        "ref": "slow-instance-fanout",
         "repo": "bestlogs-rs",
         "type": "github"
       }
