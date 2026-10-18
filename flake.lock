@@ -94,11 +94,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1791952974,
-        "narHash": "sha256-5GjmSHiFdXa1jYi+j8EdlRTHKQII4rJLtufTD+nru0k=",
+        "lastModified": 1792307081,
+        "narHash": "sha256-LC1ThV0swee2NXQgqtR91I32Owz+5FaetY8KaH4SVP0=",
         "owner": "Julia-Roman",
         "repo": "bestlogs-rs",
-        "rev": "f205439fa8a6dfcc53be2b3fb337a4b632627498",
+        "rev": "2eaf9eb1e4a2d8948c5f5a27cbbfb7597a99305b",
         "type": "github"
       },
       "original": {
