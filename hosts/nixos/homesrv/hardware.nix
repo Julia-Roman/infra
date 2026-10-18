@@ -79,6 +79,12 @@
     };
   };
 
+  systemd.tmpfiles.rules = [
+    "w /sys/class/powercap/intel-rapl:0/constraint_0_power_limit_uw - - - - 35000000"
+    "w /sys/class/powercap/intel-rapl:0/constraint_1_power_limit_uw - - - - 65000000"
+    "w /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference - - - - balance_power"
+  ];
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
