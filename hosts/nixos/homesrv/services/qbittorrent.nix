@@ -8,6 +8,11 @@
     enable = true;
     unitConfig = {
       After = "network-online.target";
+      # the hdd mounts are nofail, so nothing else orders us after them
+      RequiresMountsFor = [
+        "/mnt/hdd_4t"
+        "/mnt/hdd_500g"
+      ];
     };
     serviceConfig = {
       Type = "exec";
