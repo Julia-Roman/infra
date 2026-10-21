@@ -49,6 +49,13 @@
       in
       {
         enable = true;
+        wayland = true;
+        spotifyPackage = pkgs.spotify.overrideAttrs (oldAttrs: {
+          postFixup = (oldAttrs.postFixup or "") + ''
+            wrapProgramShell $out/share/spotify/spotify \
+              --unset DISPLAY
+          '';
+        });
         enabledExtensions = with spicePkgs.extensions; [
           adblockify
           shuffle
