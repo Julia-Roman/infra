@@ -734,6 +734,22 @@
         "type": "github"
       }
     },
+    "nvidia-vaapi-driver-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791741043,
+        "narHash": "sha256-E2c4Hn4A0Vx3lcmP/Ms7FHEtxsDcxhCmcVFvct1Uv+0=",
+        "owner": "elFarto",
+        "repo": "nvidia-vaapi-driver",
+        "rev": "443050726fdb30888a2ced1cea1c5d036ea3b15c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elFarto",
+        "repo": "nvidia-vaapi-driver",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -748,6 +764,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "noctalia": "noctalia",
+        "nvidia-vaapi-driver-git": "nvidia-vaapi-driver-git",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "technorino": "technorino",

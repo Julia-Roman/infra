@@ -26,7 +26,7 @@
   users.users.supa.packages = with pkgs; [
     # Internet
     chromium
-    inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
+    helium
     inputs.technorino.packages.${pkgs.stdenv.hostPlatform.system}.default
     tor-browser
     electrum # BTC wallet

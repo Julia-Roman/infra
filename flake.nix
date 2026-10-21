@@ -41,6 +41,11 @@
       url = "github:yt-dlp/yt-dlp";
       flake = false;
     };
+
+    nvidia-vaapi-driver-git = {
+      url = "github:elFarto/nvidia-vaapi-driver";
+      flake = false;
+    };
   };
 
   outputs =

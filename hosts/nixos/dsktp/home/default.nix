@@ -258,5 +258,10 @@
       ImageViewer=ristretto
       ArchiveManager=file-roller
     '';
+
+    # Helium only loads Widevine from the component updater's hint file, and component updates are disabled.
+    "net.imput.helium/WidevineCdm/latest-component-updated-widevine-cdm".text = builtins.toJSON {
+      Path = "${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm";
+    };
   };
 }
