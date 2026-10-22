@@ -12,10 +12,12 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: main
+          token: ${{ secrets.FLAKE_LOCK_PAT }}
 
       - uses: DeterminateSystems/nix-installer-action@main
 
       - name: Update flake.lock
+        id: update
         uses: DeterminateSystems/update-flake-lock@main
         with:
           token: ${{ secrets.FLAKE_LOCK_PAT }}
@@ -26,3 +28,29 @@ jobs:
             ```
             {{ env.GIT_COMMIT_MESSAGE }}
             ```
+
+      - name: Update caddy plugin hash
+        if: steps.update.outputs.pull-request-number != ''
+        run: |
+          git fetch origin flake-update
+          git checkout -B flake-update FETCH_HEAD
+
+          file=hosts/nixos/homesrv/services/caddy.nix
+          attr=.#nixosConfigurations.homesrv.config.services.caddy.package.src
+          old=$(nix eval --raw "$attr.outputHash")
+
+          # Build against a fake hash: with the old hash the source could be
+          # substituted by output path alone and the mismatch never surfaces.
+          sed -i "s|$old|sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=|" "$file"
+          new=$(nix build --no-link "$attr" 2>&1 | grep -oP 'got:\s+\Ksha256-\S+') || {
+            echo "could not determine caddy hash" >&2
+            exit 1
+          }
+          sed -i "s|sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=|$new|" "$file"
+
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -am "homesrv: update caddy plugin hash"
+            git push origin flake-update
+          fi
