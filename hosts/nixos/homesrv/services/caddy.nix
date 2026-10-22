@@ -86,28 +86,6 @@
         '';
       };
 
-      "pin.supa.gay" = {
-        extraConfig = ''
-          php_fastcgi unix/${config.services.phpfpm.pools.caddy.socket}
-
-          root * /var/www/pin.supa.gay
-          file_server
-          import static
-
-          rate_limit {
-            zone binternet {
-              match {
-                not remote_ip private_ranges
-                not path /image_proxy.php
-              }
-              key    {client_ip}
-              events 20
-              window 10s
-            }
-          }
-        '';
-      };
-
       "zonian.is.supa.gay" = {
         extraConfig = ''
           redir * https://zonian.dev/ permanent
@@ -154,21 +132,21 @@
         serverAliases = [ "cf-fi.supa.sh" ];
         extraConfig = ''
           header Access-Control-Allow-Origin *
-          php_fastcgi unix/${config.services.phpfpm.pools.caddy.socket}
-
-          # @direct_access expression {path}.endsWith(".php")
-          # respond @direct_access 403
 
           @opengraph expression {path}.endsWith(".mp4") && ({header.User-Agent}.startsWith("chatterino-api-cache/") || {header.User-Agent}.contains("FFZBot/"))
           handle @opengraph {
             header >Cache-Control no-cache
-            try_files /.scripts/opengraph.php
+            root * ${./caddy-templates}
+            rewrite * /opengraph.html
+            templates {
+              root /var/www/fi.supa.sh
+            }
+            file_server
           }
 
           root * /var/www/fi.supa.sh
           file_server
           import static
-          try_files {path} indexer.php
         '';
       };
 
@@ -404,19 +382,6 @@
           encode zstd gzip
         '';
       };
-    };
-  };
-
-  services.phpfpm.pools.caddy = {
-    user = "caddy";
-    settings = {
-      "listen.owner" = config.services.caddy.user;
-      "pm" = "dynamic";
-      "pm.max_children" = 32;
-      "pm.max_requests" = 500;
-      "pm.start_servers" = 2;
-      "pm.min_spare_servers" = 2;
-      "pm.max_spare_servers" = 5;
     };
   };
 }

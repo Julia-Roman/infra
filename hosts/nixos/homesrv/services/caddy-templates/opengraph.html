@@ -1,0 +1,26 @@
+{{- $path := .OriginalReq.URL.Path -}}
+{{- $info := printf "%s.info.json" (index (splitList "." $path) 0) -}}
+{{- if not (fileExists $info) }}{{ httpError 500 }}{{ end -}}
+{{- $json := readFile $info | fromJson -}}
+{{- $title := "" -}}
+{{- $description := "" -}}
+{{- $platform := dig "platform" "" $json -}}
+{{- if eq $platform "twitch" -}}
+	{{- $title = dig "channel" "displayName" "" $json -}}
+	{{- $description = dig "channel" "broadcastSettings" "title" "" $json -}}
+{{- else if eq $platform "kick" -}}
+	{{- $title = coalesce (dig "channel" "user" "username" "" $json) (dig "channel" "slug" "" $json) -}}
+	{{- $description = dig "channel" "livestream" "session_title" "" $json -}}
+{{- else -}}
+	{{- $title = coalesce $json.channel $json.uploader -}}
+	{{- $description = coalesce $json.description $json.title -}}
+{{- end -}}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta property="og:title" content="{{ html $title }}">
+	<meta property="og:description" content="{{ html $description }}">
+	<meta property="og:image" content="https://probe.supa.codes/t/?url={{ urlquery (printf "https://%s%s" .Req.Host .OriginalReq.URL.RequestURI) }}&webp=true">
+</head>
+</html>
