@@ -118,6 +118,10 @@
 
       "api.lurkology.com" = {
         extraConfig = ''
+          handle /firehose {
+            reverse_proxy :7814
+          }
+
           reverse_proxy :7813
         '';
       };
