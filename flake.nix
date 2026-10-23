@@ -41,9 +41,8 @@
       url = "github:yt-dlp/yt-dlp";
       flake = false;
     };
-
     nvidia-vaapi-driver-git = {
-      url = "github:elFarto/nvidia-vaapi-driver";
+      url = "github:Julia-Roman/nvidia-vaapi-driver/fix/chromium-small-surface-modifier";
       flake = false;
     };
   };

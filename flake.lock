@@ -737,15 +737,16 @@
     "nvidia-vaapi-driver-git": {
       "flake": false,
       "locked": {
-        "lastModified": 1791741043,
-        "narHash": "sha256-E2c4Hn4A0Vx3lcmP/Ms7FHEtxsDcxhCmcVFvct1Uv+0=",
-        "owner": "elFarto",
+        "lastModified": 1792719475,
+        "narHash": "sha256-el5n07bFGrLF6QfYQro4I6UsNv8z8C22fqFA82YZNro=",
+        "owner": "Julia-Roman",
         "repo": "nvidia-vaapi-driver",
-        "rev": "443050726fdb30888a2ced1cea1c5d036ea3b15c",
+        "rev": "7962162c455cc84fa92363e85a9f1f657639c8eb",
         "type": "github"
       },
       "original": {
-        "owner": "elFarto",
+        "owner": "Julia-Roman",
+        "ref": "fix/chromium-small-surface-modifier",
         "repo": "nvidia-vaapi-driver",
         "type": "github"
       }
