@@ -118,6 +118,8 @@
 
       "api.lurkology.com" = {
         extraConfig = ''
+          encode zstd gzip
+
           handle /firehose {
             reverse_proxy :7814
           }
