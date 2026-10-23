@@ -42,7 +42,7 @@
       flake = false;
     };
     nvidia-vaapi-driver-git = {
-      url = "github:Julia-Roman/nvidia-vaapi-driver/fix/chromium-small-surface-modifier";
+      url = "github:ooonea/nvidia-vaapi-driver/fix/direct-export-block-height-20261017";
       flake = false;
     };
   };
