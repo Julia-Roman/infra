@@ -116,7 +116,11 @@
         maintenance_work_mem = "512MB";
         random_page_cost = 1.1;
         effective_io_concurrency = 200;
-        max_wal_size = "4GB";
+        # lurkology rewrites ~150k rows every 5 minutes; checkpoints that often log most pages it
+        # touches in full, and WAL volume was forcing a third of them
+        checkpoint_timeout = "15min";
+        max_wal_size = "16GB";
+        wal_compression = "lz4";
       };
     };
 
