@@ -40,6 +40,7 @@
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
+      vpl-gpu-rt # QSV runtime for Gen12+, without it MFX session creation fails
       libva-vdpau-driver
       libvdpau-va-gl
       intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
@@ -102,7 +103,33 @@
 
     vnstat.enable = true;
 
-    jellyfin.enable = true;
+    jellyfin = {
+      enable = true;
+      hardwareAcceleration = {
+        enable = true;
+        type = "qsv";
+        device = "/dev/dri/renderD128";
+      };
+      # encoding.xml already exists, so without this the options below are never applied
+      forceEncodingConfig = true;
+      transcoding = {
+        enableHardwareEncoding = true;
+        enableIntelLowPowerEncoding = true; # HuC is loaded and authenticated
+        # UHD 730 (Alder Lake): no VP8 decode, no AV1 encode
+        hardwareDecodingCodecs = {
+          h264 = true;
+          hevc = true;
+          mpeg2 = true;
+          vc1 = true;
+          vp9 = true;
+          av1 = true;
+          hevcRExt10bit = true;
+          hevcRExt12bit = true;
+        };
+        # no hevc encoding: low-power hevc turns dark film grain into blocks at streaming bitrates
+        # (needs ~4x the bitrate of low-power h264 to look as good)
+      };
+    };
 
     postgresql = {
       enable = true;
