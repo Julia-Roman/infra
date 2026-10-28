@@ -24,6 +24,8 @@ let
         User = "fivem";
         Restart = "always";
         RestartSec = 3;
+        MemoryMax = "8G";
+        MemorySwapMax = "4G";
         WorkingDirectory = "/home/fivem/artifacts";
         EnvironmentFile = envFile;
         ExecStartPre = "/bin/sh ${dataDir}/generate-env-cfg.sh";
