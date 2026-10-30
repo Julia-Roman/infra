@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   unstable,
@@ -6,7 +7,7 @@
 }:
 {
   services.n8n = {
-    enable = true;
+    enable = false;
     package = unstable.n8n;
     environment = {
       N8N_PORT = 5678;
@@ -39,7 +40,7 @@
     };
   };
 
-  systemd.services.n8n = {
+  systemd.services.n8n = lib.mkIf config.services.n8n.enable {
     path = with pkgs; [
       bash
       curl
