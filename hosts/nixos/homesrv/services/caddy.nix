@@ -6,6 +6,7 @@
 {
   services.caddy = {
     enable = true;
+    environmentFile = "/etc/caddy.env";
     email = "supa.codes@gmail.com";
 
     package = pkgs.caddy.withPlugins {
@@ -138,6 +139,14 @@
         serverAliases = [ "cf-fi.supa.sh" ];
         extraConfig = ''
           header Access-Control-Allow-Origin *
+
+          @jakeLocked {
+            path /.archive/jake/*
+            expression `{query.key} == "" || {query.key} != {env.JAKE_KEY}`
+          }
+          handle @jakeLocked {
+            respond 401
+          }
 
           @opengraph expression {path}.endsWith(".mp4") && ({header.User-Agent}.startsWith("chatterino-api-cache/") || {header.User-Agent}.contains("FFZBot/"))
           handle @opengraph {
