@@ -3,6 +3,8 @@
   ...
 }:
 {
+  services.wl-clip-persist.enable = true;
+
   programs.niri = {
     settings = {
       prefer-no-csd = true;
