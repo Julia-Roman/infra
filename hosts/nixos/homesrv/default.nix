@@ -20,7 +20,10 @@
     };
     kernel.sysctl = {
       "vm.swappiness" = 1;
-      "vm.nr_hugepages" = 4096;
+      # Postgres' shared memory needs 2108 pages (`SHOW
+      # shared_memory_size_in_huge_pages`); raise this with shared_buffers or
+      # huge_pages = try silently falls back to normal pages.
+      "vm.nr_hugepages" = 2200;
     };
     tmp = {
       useTmpfs = true;
