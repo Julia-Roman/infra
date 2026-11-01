@@ -15,12 +15,16 @@
       User = "minecraft";
       Restart = "always";
       RestartSec = 3;
+      MemoryMax = "6G";
+      MemorySwapMax = "2G";
       WorkingDirectory = "/home/minecraft/supa";
       ExecStart = lib.escapeShellArgs [
         (lib.getExe' pkgs.jdk21 "java")
-        "-Xms2G"
-        "-Xmx12G"
-        "-XX:+AlwaysPreTouch"
+        "-Xms512M"
+        "-Xmx4G"
+        # The server sits empty most of the time; an idle G1 only returns
+        # heap to the OS after a GC cycle, which this forces every 5 minutes.
+        "-XX:G1PeriodicGCInterval=300000"
         "-XX:+DisableExplicitGC"
         "-XX:+ParallelRefProcEnabled"
         "-XX:+PerfDisableSharedMem"
