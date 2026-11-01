@@ -339,7 +339,7 @@
          It is not practical to set this constraint to small values like just a few gigabytes,
           because memory allocator will keep this amount of memory in caches and the server will deny service of queries.
       -->
-    <max_server_memory_usage>0</max_server_memory_usage>
+    <max_server_memory_usage>8589934592</max_server_memory_usage>
 
     <!-- Maximum number of threads in the Global thread pool.
     This will default to a maximum of 10000 threads if not specified.
@@ -408,11 +408,11 @@
          In bytes. Cache is single for server. Memory is allocated only on demand.
          You should not lower this value.
       -->
-    <mark_cache_size>5368709120</mark_cache_size>
+    <mark_cache_size>536870912</mark_cache_size>
 
     <!-- For marks of secondary indices.
       -->
-    <index_mark_cache_size>5368709120</index_mark_cache_size>
+    <index_mark_cache_size>536870912</index_mark_cache_size>
 
     <!-- If you enable the `min_bytes_to_use_mmap_io` setting,
          the data in MergeTree tables can be read with mmap to avoid copying from kernel to userspace.
