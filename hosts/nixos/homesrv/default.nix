@@ -64,29 +64,6 @@
     rtkit.enable = true;
   };
 
-  fileSystems."/var/www/fi.supa.sh/clips" = {
-    device = "10.2.0.1:/supelle";
-    fsType = "nfs";
-    options = [
-      "async"
-      "fsc"
-      "nocto"
-      "noatime"
-      "nosuid"
-      "nodev"
-      "noexec"
-      "nofail"
-      "noauto"
-      "x-systemd.automount"
-      "_netdev"
-      "soft"
-      "timeo=50"
-      "retrans=2"
-      "retry=0"
-      "x-systemd.mount-timeout=15"
-    ];
-  };
-
   services = {
     xserver.videoDrivers = [ "intel" ];
 
