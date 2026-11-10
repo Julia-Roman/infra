@@ -12,7 +12,6 @@
       ])
       {
         # without the clips mount it would write into the empty directory underneath
-        unitConfig.After = "network-online.target rclone-clips.service";
-        requires = [ "rclone-clips.service" ];
+        unitConfig.RequiresMountsFor = "/var/www/fi.supa.sh/clips";
       };
 }

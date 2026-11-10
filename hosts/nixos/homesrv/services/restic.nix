@@ -19,6 +19,7 @@
         ".cargo"
         ".rustup"
         "/var/cache"
+        "/var/lib/clips"
         "/var/www/fi.supa.sh"
         "/var/www/i.supa.sh"
         "/var/lib/jellyfin/transcodes"
