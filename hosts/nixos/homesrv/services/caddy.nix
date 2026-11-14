@@ -13,7 +13,7 @@
       plugins = [
         "github.com/mholt/caddy-ratelimit@v0.1.0"
       ];
-      hash = "sha256-nYE5/88oJ9Od6ohlzfr3uybPlNnrqnPccmIqyn1Kz7E=";
+      hash = "sha256-cpFEax7/ZskEWn4Ka20vOwR9+3Us4rrRZH3anUK708I=";
     };
 
     # https://www.cloudflare.com/ips/ — strict mode takes the rightmost
