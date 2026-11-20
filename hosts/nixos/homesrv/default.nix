@@ -19,7 +19,9 @@
       timeout = 1;
     };
     kernel.sysctl = {
-      "vm.swappiness" = 1;
+      # Swap is zram, so swapping idle memory out costs less than reading
+      # evicted page cache back from disk.
+      "vm.swappiness" = 100;
       # Postgres' shared memory needs 2108 pages (`SHOW
       # shared_memory_size_in_huge_pages`); raise this with shared_buffers or
       # huge_pages = try silently falls back to normal pages.
