@@ -122,7 +122,11 @@
           encode zstd gzip
 
           handle /firehose {
-            reverse_proxy :7814
+            # a client reading slower than the stream pins megabytes of
+            # buffered chat per socket until it drains
+            reverse_proxy :7814 {
+              stream_timeout 5m
+            }
           }
 
           reverse_proxy :7813
