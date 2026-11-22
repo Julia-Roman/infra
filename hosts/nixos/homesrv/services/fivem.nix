@@ -46,4 +46,19 @@ in
       args = " +set serverProfile staging +set txAdminPort 40121";
     };
   };
+
+  # let the fivem group start/stop/restart both instances without sudo
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.freedesktop.systemd1.manage-units" &&
+          subject.isInGroup("fivem")) {
+        var unit = action.lookup("unit");
+        var verb = action.lookup("verb");
+        if ((unit == "fivem.service" || unit == "fivem-staging.service") &&
+            (verb == "restart" || verb == "start" || verb == "stop")) {
+          return polkit.Result.YES;
+        }
+      }
+    });
+  '';
 }
