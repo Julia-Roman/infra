@@ -15,7 +15,8 @@
         443
         57386 # bittorrent
         25565 # Minecraft
-        1935 # RTMP
+        1935 # RTMP (lurkology-ingest)
+        7817 # WebRTC over TCP (lurkology-ingest)
         8554 # RTSP
         30120 # FiveM
         30169 # FiveM staging
@@ -25,6 +26,7 @@
         443
         57386 # bittorrent
         8080 # srt-relay
+        7817 # WebRTC (lurkology-ingest)
         8189 # WebRTC (ICE)
         8890 # SRT
         24454 # Minecraft (voicechat)
